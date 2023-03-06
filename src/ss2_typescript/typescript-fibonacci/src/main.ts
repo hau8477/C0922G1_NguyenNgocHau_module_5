@@ -12,4 +12,4 @@ for (let i = 0; i <= 10; i++) {
     sum += fibonacci(i);
 }
 
-console.log("Tổng các số fibonacci từ 0-10 là: " + sum);
+console.log("Tổng 10 số fibonacci đầu tiên là: " + sum);
