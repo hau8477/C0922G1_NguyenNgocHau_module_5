@@ -7,7 +7,7 @@ let fibonacci = function (a: number): number {
 
 let sum = 0;
 
-for (let i = 0; i <= 10; i++) {
+for (let i = 0; i < 10; i++) {
     console.log(fibonacci(i))
     sum += fibonacci(i);
 }

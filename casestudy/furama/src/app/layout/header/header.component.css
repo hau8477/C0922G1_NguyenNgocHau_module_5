@@ -33,3 +33,14 @@ style{
   padding-top: 10px;
   padding-bottom: 12px;
 }
+
+
+
+.stuck-cus{
+  position: fixed;
+}
+
+.header {
+  background-color: #9FD99E;
+}
+

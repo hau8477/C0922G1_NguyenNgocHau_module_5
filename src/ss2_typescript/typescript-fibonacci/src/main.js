@@ -5,8 +5,8 @@ var fibonacci = function (a) {
     return fibonacci(a - 1) + fibonacci(a - 2);
 };
 var sum = 0;
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i <= 5; i++) {
     console.log(fibonacci(i));
     sum += fibonacci(i);
 }
-console.log("Tổng các số fibonacci từ 0-10 là: " + sum);
+console.log("Tổng 10 số fibonacci đầu tiên là: " + sum);
