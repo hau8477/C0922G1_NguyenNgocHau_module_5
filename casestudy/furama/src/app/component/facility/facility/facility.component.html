@@ -1,1 +1,365 @@
-<p>facility works!</p>
+
+<table id="tableService" class="table table-striped">
+  <thead>
+  <tr>
+    <th>STT</th>
+    <th>Tên dịch vụ</th>
+    <th>Diện tích sử dụng</th>
+    <th>Giá</th>
+    <th>Số lượng người tối đa</th>
+    <th>Kiểu thuê</th>
+    <th>Loại dịch vụ</th>
+    <th>Tiêu chuẩn phòng</th>
+    <th>Mô tả tiện ích khác</th>
+    <th>Diện tích hồ bơi</th>
+    <th>Số tầng</th>
+    <th>Dịch vụ miễn phí</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>
+      <button onclick=getInfoFacility() type="button" class="btn btn-warning"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal1">
+        Sửa
+      </button>
+    </td>
+    <td>
+      <button
+              type="button" class="btn btn-danger" data-bs-toggle="modal"
+              data-bs-target="#exampleModal3">
+        Xóa
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <th></th>
+    <th>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        +
+      </button>
+    </th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </tbody>
+</table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link">1</a></li>
+    <li class="page-item"><a class="page-link">2</a></li>
+    <li class="page-item">
+      <a class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>
+<!--Modal create-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel1">Thêm mới dịch vụ</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="onCloseModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          <div class="mb-3">
+            <label for="facilityTypeId" class="form-label">Loại dịch vụ</label>
+            <div class="mb-3">
+              <label for="facilityTypeId" class="form-label"></label>
+              <select onchange="hiddenInput()" class="form-select" aria-label="Default select example"
+
+                      id="facilityTypeId">
+                <option></option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="nameService" class="form-label">Tên dịch vụ</label>
+            <input type="text" class="form-control" id="nameService" aria-describedby="emailHelp">
+            <p style="color: red"
+               class="form-text">
+            </p>
+          </div>
+          <div class="mb-3">
+            <label for="area" class="form-label">Diện tích</label>
+            <input type="number" class="form-control" id="area">
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="cost" class="form-label">Giá</label>
+            <input type="number" class="form-control" id="cost" aria-describedby="emailHelp">
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="maxPeople" class="form-label">Số lượng người tối đa</label>
+            <input type="number" class="form-control" id="maxPeople" aria-describedby="emailHelp"
+            >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="rentType" class="form-label">Kiểu thuê</label>
+            <div class="mb-3">
+              <label for="rentType" class="form-label"></label>
+              <select  class="form-select" aria-label="Default select example"
+                      name="rentType" id="rentType">
+                <option></option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="standardRoom" class="form-label">Tiêu chuẩn phòng</label>
+            <input type="text" class="form-control" id="standardRoom" aria-describedby="emailHelp"
+                   >
+          </div>
+          <div class="mb-3">
+            <label for="descriptionOtherConvenience" class="form-label">Mô tả tiện ích khách</label>
+            <input type="text" class="form-control" id="descriptionOtherConvenience"
+                   aria-describedby="emailHelp"
+                   >
+          </div>
+          <div class="mb-3">
+            <label for="poolArea" class="form-label">Diện tích hồ bơi</label>
+            <input type="number" class="form-control" id="poolArea" aria-describedby="emailHelp"
+                  >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="numberOfFloors" class="form-label">Số tầng</label>
+            <input type="number" class="form-control" id="numberOfFloors" aria-describedby="emailHelp"
+                 >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="facilityFree" class="form-label">Dịch vụ miễn phí</label>
+            <input type="text" class="form-control" id="facilityFree" aria-describedby="emailHelp"
+                   >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="onCloseModal()" data-bs-dismiss="modal">Thoát</button>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal edit-->
+<div
+        class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel2">Chỉnh sửa dịch vụ</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="onCloseModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          <input type="number" id="idServiceEdit" hidden >
+          <div class="mb-3">
+            <label for="facilityTypeId" class="form-label">Loại dịch vụ</label>
+            <div class="mb-3">
+              <label for="facilityTypeId" class="form-label"></label>
+              <select onchange="hiddenInput()" class="form-select" aria-label="Default select example"
+
+                      id="facilityTypeIdEdit">
+                <option>
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="nameService" class="form-label">Tên dịch vụ</label>
+            <input type="text" class="form-control" id="nameServiceEdit" aria-describedby="emailHelp">
+
+            <p style="color: red"
+               class="form-text">
+            </p>
+          </div>
+          <div class="mb-3">
+            <label for="area" class="form-label">Diện tích</label>
+            <input type="number" class="form-control" id="areaEdit"
+                  >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="cost" class="form-label">Giá</label>
+            <input type="number" class="form-control" id="costEdit" aria-describedby="emailHelp"
+                 >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="maxPeople" class="form-label">Số lượng người tối đa</label>
+            <input type="number" class="form-control" id="maxPeopleEdit" aria-describedby="emailHelp"
+                 >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="rentType" class="form-label">Kiểu thuê</label>
+            <div class="mb-3">
+              <label for="rentType" class="form-label"></label>
+              <select class="form-select" aria-label="Default select example"
+                      >
+                <option></option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="standardRoom" class="form-label">Tiêu chuẩn phòng</label>
+            <input type="text" class="form-control" id="standardRoomEdit" aria-describedby="emailHelp"
+                  >
+          </div>
+          <div class="mb-3">
+            <label for="descriptionOtherConvenience" class="form-label">Mô tả tiện ích khác</label>
+            <input type="text" class="form-control" id="descriptionOtherConvenienceEdit"
+                   aria-describedby="emailHelp"
+                  >
+          </div>
+          <div class="mb-3">
+            <label for="poolArea" class="form-label">Diện tích hồ bơi</label>
+            <input type="number" class="form-control" id="poolAreaEdit" aria-describedby="emailHelp"
+                   >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="numberOfFloors" class="form-label">Số tầng</label>
+            <input type="number" class="form-control" id="numberOfFloorsEdit" aria-describedby="emailHelp"
+                  >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="facilityFree" class="form-label">Dịch vụ miễn phí</label>
+            <input type="text" class="form-control" id="facilityFreeEdit" aria-describedby="emailHelp"
+                   >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="onCloseModal()" data-bs-dismiss="modal">Thoát</button>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal delete -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel3">Delete service</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          <input hidden type="number" id="idDelete" name="idDelete">
+          <span>
+                        Bạn có chắc chắn muốn xóa <span style="color: red" id="nameDelete"></span>
+                    </span>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+            <button type="submit" class="btn btn-primary">Xóa</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function hiddenInput() {
+    let choice = +document.getElementById("facilityTypeId").value;
+
+    switch (choice) {
+      case 1:
+        document.getElementById("nameService").value = "Villa";
+        document.getElementById("facilityFree").disabled = false;
+        document.getElementById("standardRoom").disabled = false;
+        document.getElementById("poolArea").disabled = false;
+        document.getElementById("numberOfFloors").disabled = false;
+        break;
+      case 2:
+        document.getElementById("nameService").value = "House";
+        document.getElementById("facilityFree").disabled = true;
+        document.getElementById("standardRoom").disabled = false;
+        document.getElementById("poolArea").disabled = false;
+        document.getElementById("numberOfFloors").disabled = false;
+        break;
+      case 3:
+        document.getElementById("nameService").value = "Room";
+        document.getElementById("standardRoom").disabled = true;
+        document.getElementById("poolArea").disabled = true;
+        document.getElementById("numberOfFloors").disabled = true;
+        document.getElementById("facilityFree").disabled = false;
+        break;
+      default:
+        document.getElementById("standardRoom").disabled = false;
+        document.getElementById("poolArea").disabled = false;
+        document.getElementById("numberOfFloors").disabled = false;
+        document.getElementById("facilityFree").disabled = false;
+    }
+  }
+
+  function getInfoFacility(id, name, area, cost, maxPeople, rentTypeId, facilityTypeId, standardRoom,
+                           descriptionOtherConvenience, poolArea, numberOfFloors, facilityFree) {
+    document.getElementById("idServiceEdit").value = id;
+    document.getElementById("nameServiceEdit").value = name;
+    document.getElementById("areaEdit").value = area;
+    document.getElementById("costEdit").value = cost;
+    document.getElementById("maxPeopleEdit").value = maxPeople;
+    document.getElementById("standardRoomEdit").value = standardRoom;
+    document.getElementById("descriptionOtherConvenienceEdit").value = descriptionOtherConvenience;
+    document.getElementById("poolAreaEdit").value = poolArea;
+    document.getElementById("numberOfFloorsEdit").value = numberOfFloors;
+    document.getElementById("facilityFreeEdit").value = facilityFree;
+  }
+
+  function getInfoDelete(id, name) {
+    document.getElementById("idDelete").value = id;
+    document.getElementById("nameDelete").innerText = name;
+  }
+
+  function onCloseModal() {
+    document.getElementById('exampleModal').style.display = 'none';
+    window.location.href = "/facilities";
+  }
+</script>
+
