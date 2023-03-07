@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './component/layout/navbar/navbar.component';
 import { FooterComponent } from './component/layout/footer/footer.component';
 import { HeaderComponent } from './component/layout/header/header.component';
+import { FacilityComponent } from './component/facility/facility/facility.component';
+import { EmployeeComponent } from './component/employee/employee/employee.component';
+import { CustomerComponent } from './component/customer/customer/customer.component';
+import { HomeComponent } from './component/home/home.component';
+import { ContractComponent } from './component/contract/contract/contract.component';
 
 
 @NgModule({
@@ -13,7 +18,12 @@ import { HeaderComponent } from './component/layout/header/header.component';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    FacilityComponent,
+    EmployeeComponent,
+    CustomerComponent,
+    HomeComponent,
+    ContractComponent
   ],
   imports: [
     BrowserModule,
