@@ -1,0 +1,147 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createContractModal"
+        onclick="clearListAT()">
+  +
+</button>
+
+<!--Modal create contract-->
+<div class="modal fade" id="createContractModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel1">Tạo hợp đồng</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" id="contractNew">
+          <div class="mb-3">
+            <label for="startDate" class="form-label">Ngày bắt đầu</label>
+            <input type="datetime-local" class="form-control" id="startDate"
+                   aria-describedby="emailHelp"
+                   required >
+          </div>
+          <div class="mb-3">
+            <label for="endDate" class="form-label">Ngày kết thúc</label>
+            <input type="datetime-local" class="form-control" id="endDate"
+                   placeholder="1970-11-07"
+            >
+          </div>
+          <div class="mb-3">
+            <label for="deposit" class="form-label">Tiền đặt cọc</label>
+            <input type="text" class="form-control" id="deposit" aria-describedby="emailHelp"
+                   placeholder="VD: 13549681324" >
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Khách hàng
+              <a href="/customers/">
+                <button type="button" class="btn btn-secondary">Thêm mới khách hàng ở đây</button>
+              </a>
+            </label>
+            <select  class="form-select" aria-label="Default select example"
+                     id="customer">
+              <option></option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nhân viên</label>
+            <select  class="form-select" aria-label="Default select example"
+                     id="employee">
+              <option></option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Dịch vụ</label>
+            <select  class="form-select" aria-label="Default select example"
+                     id="facility" onchange="getTotalCost()">
+              <option></option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Dịch vụ đi kèm</label>
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop1">
+              +
+            </button>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Danh sách dịch vụ đi kèm</label>
+            <div>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Dịch vụ đi kèm</th>
+                  <th>Số lượng</th>
+                  <th>Thành tiền</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody id="content">
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tổng tiền tạm tính</label>
+            <input type="text" class="form-control" id="totalCost" aria-describedby="emailHelp">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy bỏ</button>
+            <button type="button" class="btn btn-primary" onclick="checkContract()">Tạo hợp đồng</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal add attach facility in contract-->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel12" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel12">Dịch vụ đi kèm</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>STT</th>
+            <th>Dịch vụ</th>
+            <th>Trạng thái</th>
+            <th>Đơn vị</th>
+            <th>Giá tiền</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr >
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example" id="nameAT">
+            <option ></option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Số lượng</label>
+          <input type="number" class="form-control" id="quantityAT"
+                 aria-describedby="emailHelp"
+                 required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+        <button type="button" class="btn btn-primary" onclick="addNewAttachFacility()">Thêm</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<button type="button" class="btn btn-warning" data-bs-toggle="modal"
+        data-bs-target="#exampleModal1">
+  Sửa
+</button>
+
+<!--Modal edit-->
+<div class="modal fade"
+     tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" id="exampleModal1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Chỉnh sửa thông tin khách hàng</h1>
+        <button type="button" class="btn-close" onclick="onCloseModal()" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" >
+          <input type="number" hidden id="id1" >
+          <div class="mb-3">
+            <label class="form-label">Họ và tên</label>
+            <input type="text" class="form-control" id="name1" aria-describedby="emailHelp"
+                   placeholder="VD: Nguyễn Văn An" required >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Ngày sinh</label>
+            <input type="datetime-local" class="form-control" id="birthdate1" placeholder="1970-11-07"
+                   required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Giới tính</label><br>
+            <label for="gender12"><input class="ms-3 me-1" checked type="radio"
+                                         id="gender12" >
+              Nam
+            </label>
+            <label for="gender122"><input class="ms-3 me-1" type="radio" id="gender122"
+            >
+              Nữ
+            </label>
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">CCCD/CMND</label>
+            <input type="text" class="form-control" id="idCard1" aria-describedby="emailHelp"
+                   placeholder="VD: 13549681324"  required>
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Số điện thoại</label>
+            <input type="text" class="form-control" id="phoneNumber1" aria-describedby="emailHelp"
+                   placeholder="VD: 4562317861"  required>
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Email</label>
+            <input type="email" class="form-control" id="email1" aria-describedby="emailHelp"
+                   placeholder="VD: annguyen@gamil.com"  required>
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Địa chỉ</label>
+            <input type="text" class="form-control" id="address1" aria-describedby="emailHelp"
+                   placeholder="VD: 22 Yên Bái, Đà Nẵng" required>
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Loại khách</label>
+            <select class="form-select" aria-label="Default select example">
+              <option></option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" onclick="onCloseModal()" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Thoát
+            </button>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

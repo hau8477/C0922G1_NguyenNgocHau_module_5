@@ -1,0 +1,101 @@
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  +
+</button>
+
+<!--Modal create-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel1">Thêm mới dịch vụ</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="onCloseModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          <div class="mb-3">
+            <label for="facilityTypeId" class="form-label">Loại dịch vụ</label>
+            <div class="mb-3">
+              <label for="facilityTypeId" class="form-label"></label>
+              <select onchange="hiddenInput()" class="form-select" aria-label="Default select example"
+
+                      id="facilityTypeId">
+                <option></option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="nameService" class="form-label">Tên dịch vụ</label>
+            <input type="text" class="form-control" id="nameService" aria-describedby="emailHelp">
+            <p style="color: red"
+               class="form-text">
+            </p>
+          </div>
+          <div class="mb-3">
+            <label for="area" class="form-label">Diện tích</label>
+            <input type="number" class="form-control" id="area">
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="cost" class="form-label">Giá</label>
+            <input type="number" class="form-control" id="cost" aria-describedby="emailHelp">
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="maxPeople" class="form-label">Số lượng người tối đa</label>
+            <input type="number" class="form-control" id="maxPeople" aria-describedby="emailHelp"
+            >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="rentType" class="form-label">Kiểu thuê</label>
+            <div class="mb-3">
+              <label for="rentType" class="form-label"></label>
+              <select  class="form-select" aria-label="Default select example"
+                       name="rentType" id="rentType">
+                <option></option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="standardRoom" class="form-label">Tiêu chuẩn phòng</label>
+            <input type="text" class="form-control" id="standardRoom" aria-describedby="emailHelp"
+            >
+          </div>
+          <div class="mb-3">
+            <label for="descriptionOtherConvenience" class="form-label">Mô tả tiện ích khách</label>
+            <input type="text" class="form-control" id="descriptionOtherConvenience"
+                   aria-describedby="emailHelp"
+            >
+          </div>
+          <div class="mb-3">
+            <label for="poolArea" class="form-label">Diện tích hồ bơi</label>
+            <input type="number" class="form-control" id="poolArea" aria-describedby="emailHelp"
+            >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="numberOfFloors" class="form-label">Số tầng</label>
+            <input type="number" class="form-control" id="numberOfFloors" aria-describedby="emailHelp"
+            >
+            <p style="color: red"
+               class="form-text"></p>
+          </div>
+          <div class="mb-3">
+            <label for="facilityFree" class="form-label">Dịch vụ miễn phí</label>
+            <input type="text" class="form-control" id="facilityFree" aria-describedby="emailHelp"
+            >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="onCloseModal()" data-bs-dismiss="modal">Thoát</button>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

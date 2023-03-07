@@ -25,10 +25,7 @@
     <td></td>
     <td></td>
     <td>
-      <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-              data-bs-target="#exampleModal1">
-        Sửa
-      </button>
+      <app-facility-edit></app-facility-edit>
     </td>
     <td>
       <button
@@ -41,9 +38,7 @@
   <tr>
     <td></td>
     <td>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        +
-      </button>
+      <app-customer-create></app-customer-create>
     </td>
     <td></td>
     <td></td>
@@ -70,168 +65,6 @@
   </ul>
 </nav>
 
-<!--Modal create-->
-<div class="modal fade" id="exampleModal"
-     tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel1">Thêm mới khách hàng</h1>
-        <button type="button" class="btn-close"
-                onclick=onCloseModal() data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="post" id="customer">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Họ và tên</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                   placeholder="VD: Nguyễn Văn An" required >
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label for="birthdate" class="form-label">Ngày sinh</label>
-            <input type="datetime-local" class="form-control" id="birthdate" placeholder="dd/mm/yyyy"
-                   required>
-
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Giới tính</label><br>
-            <label for="gender1"><input class="ms-3 me-1" checked type="radio"
-                                        id="gender1" >
-              Nam
-            </label>
-            <label for="gender2"><input class="ms-3 me-1" type="radio"  id="gender2"
-                                     >
-              Nữ
-            </label>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail2" class="form-label">CCCD/CMND</label>
-            <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp"
-                   placeholder="VD: 13549681324"  required>
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail4" class="form-label">Số điện thoại</label>
-            <input type="text" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp"
-                   placeholder="VD: 4562317861"  required>
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail5" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp"
-                   placeholder="VD: annguyen@gamil.com"  required>
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail6" class="form-label">Địa chỉ</label>
-            <input type="text" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp"
-                   placeholder="VD: 22 Yên Bái, Đà Nẵng"  required>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail6" class="form-label">Loại khách</label>
-            <select  class="form-select" aria-label="Default select example">
-              <option></option>
-            </select>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                   onclick=onCloseModal()>Thoát
-            </button>
-            <button type="button" class="btn btn-primary" id="submit-btn" onclick="checkBirthday()">Lưu
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--Modal edit-->
-<div class="modal fade"
-     tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" id="exampleModal1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Chỉnh sửa thông tin khách hàng</h1>
-        <button type="button" class="btn-close" onclick="onCloseModal()" data-bs-dismiss="modal"
-                aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="post" >
-          <input type="number" hidden id="id1" >
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Họ và tên</label>
-            <input type="text" class="form-control" id="name1" aria-describedby="emailHelp"
-                   placeholder="VD: Nguyễn Văn An" required >
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Ngày sinh</label>
-            <input type="datetime-local" class="form-control" id="birthdate1" placeholder="1970-11-07"
-                  required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Giới tính</label><br>
-            <label for="gender12"><input class="ms-3 me-1" checked type="radio"
-                                         id="gender12" >
-              Nam
-            </label>
-            <label for="gender122"><input class="ms-3 me-1" type="radio" id="gender122"
-                                       >
-              Nữ
-            </label>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail2" class="form-label">CCCD/CMND</label>
-            <input type="text" class="form-control" id="idCard1" aria-describedby="emailHelp"
-                   placeholder="VD: 13549681324"  required>
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail4" class="form-label">Số điện thoại</label>
-            <input type="text" class="form-control" id="phoneNumber1" aria-describedby="emailHelp"
-                   placeholder="VD: 4562317861"  required>
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail5" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email1" aria-describedby="emailHelp"
-                   placeholder="VD: annguyen@gamil.com"  required>
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail6" class="form-label">Địa chỉ</label>
-            <input type="text" class="form-control" id="address1" aria-describedby="emailHelp"
-                   placeholder="VD: 22 Yên Bái, Đà Nẵng" required>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail6" class="form-label">Loại khách</label>
-            <select class="form-select" aria-label="Default select example">
-              <option></option>
-            </select>
-          </div>
-          <div class="modal-footer">
-            <button type="button" onclick="onCloseModal()" class="btn btn-secondary"
-                    data-bs-dismiss="modal">Thoát
-            </button>
-            <button type="submit" class="btn btn-primary">Lưu</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Modal delete-->
 <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
   <div class="modal-dialog">
@@ -255,6 +88,7 @@
     </div>
   </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   function getInfoCustomerEdit(id, name, dayOfBirth, gender, idCard, phoneNumber, email, address, customerType) {
