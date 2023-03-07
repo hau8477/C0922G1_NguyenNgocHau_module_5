@@ -1,0 +1,18 @@
+<h1>CALCULATOR</h1>
+
+<span>Number 1: </span>
+<label>
+  <input type="number" [(ngModel)]="number1"/>
+</label>
+
+<span>Number 2: </span>
+<label>
+  <input type="number" [(ngModel)]="number2"/>
+</label>
+
+<button (click)="getAddition()" [disabled]="!canCalculate()">+</button>
+<button (click)="getSubtraction()" [disabled]="!canCalculate()">-</button>
+<button (click)="getMultiplication()" [disabled]="!canCalculate()">X</button>
+<button (click)="getDivision()" [disabled]="!canCalculate()">/</button>
+
+<h3>Result: <span style="color: blue">{{result}}</span></h3>

@@ -3,21 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './component/layout/navbar/navbar.component';
-import { FooterComponent } from './component/layout/footer/footer.component';
-import { HeaderComponent } from './component/layout/header/header.component';
-
+import { ColorComponent } from './color/color.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    HeaderComponent
+    ColorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
