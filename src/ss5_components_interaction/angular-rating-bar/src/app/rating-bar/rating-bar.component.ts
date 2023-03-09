@@ -14,29 +14,21 @@ export class RatingBarComponent implements OnInit {
   @Input()
   showRatingValue = true;
 
-  @Output()
-  rateChange = new EventEmitter<number>();
-
   ratingUnits: Array<IRatingUnit> = [];
 
-  constructor() { }
-
-  // tslint:disable-next-line:use-lifecycle-interface
-  ngOnChanges(changes: SimpleChanges) {
-    if ('max' in changes) {
-      let max = changes.max.currentValue;
-      max = typeof max === 'undefined' ? 5 : max;
-      this.max = max;
-      this.calculate(max, this.ratingValue);
-    }
+  constructor() {
   }
 
   calculate(max, ratingValue) {
-    this.ratingUnits = Array.from({length: max},
-      (_, index) => ({
-        value: index + 1,
-        active: index < ratingValue
-      }));
+    // Tạo ra 10 phần tử
+    // từ i+1 đến max
+    // active true true true true true false false false false false
+    for (let i = 0; i < max; i++) {
+      this.ratingUnits[i] = {
+        value: i + 1,
+        active: i < ratingValue
+      };
+    }
   }
 
   ngOnInit() {
@@ -45,14 +37,19 @@ export class RatingBarComponent implements OnInit {
 
   select(index) {
     this.ratingValue = index + 1;
-    this.ratingUnits.forEach((item, idx) => item.active = idx < this.ratingValue);
-    this.rateChange.emit(this.ratingValue);
+    this.reset();
   }
+
   enter(index) {
-    this.ratingUnits.forEach((item, idx) => item.active = idx <= index);
+    for (let i = 0; i < this.max; i++) {
+      this.ratingUnits[i].active = i <= index;
+    }
   }
+
   reset() {
-    this.ratingUnits.forEach((item, idx) => item.active = idx < this.ratingValue);
+    for (let i = 0; i < this.max; i++) {
+      this.ratingUnits[i].active = i < this.ratingValue;
+    }
   }
 
 }
