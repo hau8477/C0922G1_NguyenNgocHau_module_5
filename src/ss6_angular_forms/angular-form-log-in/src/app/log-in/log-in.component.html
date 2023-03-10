@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="col-5">
+    <h1>Log in</h1>
+    <form novalidate [formGroup]="formLogIn" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="email">Email: </label>
+        <input type="email" class="form-control" formControlName="email" name="" id="email">
+        <span class="text-danger"
+              *ngIf="
+              formLogIn.controls.email?.touched &&
+              formLogIn.controls.email?.errors?.required">
+          Phải nhập trường này.
+        </span>
+        <span class="text-danger"
+              *ngIf="
+              formLogIn.controls.email?.dirty &&
+              formLogIn.controls.email?.errors?.pattern">
+          Không đúng định dạng email
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <label for="password">Password: </label>
+        <input type="password" class="form-control" formControlName="password" name="" id="password">
+        <span class="text-danger"
+              *ngIf="
+              formLogIn.controls.password?.touched &&
+              formLogIn.controls.password?.errors?.required">
+          Phải nhập trường này
+        </span>
+        <span class="text-danger"
+              *ngIf="
+              formLogIn.controls.password?.dirty &&
+              formLogIn.controls.password?.errors?.minlength">
+          Mật khẩu phải nhiều hơn 6 kí tự
+        </span>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="formLogIn.invalid">Submit</button>
+    </form>
+  </div>
+</div>
+

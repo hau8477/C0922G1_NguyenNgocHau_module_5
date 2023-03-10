@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="col-5">
+    <h1>Sign up</h1>
+    <form novalidate [formGroup]="formSignUp" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="email">Email: </label>
+        <input type="email" class="form-control" formControlName="email" name="" id="email">
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.email?.touched &&
+              formSignUp.controls.email?.errors?.required">
+          Phải nhập trường này.
+        </span>
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.email?.dirty &&
+              formSignUp.controls.email?.errors?.pattern">
+          Không đúng định dạng email
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <label for="password">Password: </label>
+        <input type="password" class="form-control" formControlName="password" name="" id="password">
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.password?.touched &&
+              formSignUp.controls.password?.errors?.required">
+          Phải nhập trường này
+        </span>
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.password?.dirty &&
+              formSignUp.controls.password?.errors?.minlength">
+          Mật khẩu phải nhiều hơn 6 kí tự
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmPassword">Confirm password: </label>
+        <input type="password" class="form-control" formControlName="confirmPassword" name="" id="confirmPassword">
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.confirmPassword?.touched &&
+              formSignUp.controls.confirmPassword?.errors?.required">
+          Phải nhập trường này
+        </span>
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.confirmPassword?.dirty &&
+              formSignUp.controls.confirmPassword?.errors?.passwordMismatch">
+          Mật khẩu không khớp
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="country">Country: </label>
+        <select class="form-select" aria-label="Default select example" name="" id="country" formControlName="country">
+          <option value=""></option>
+          <option *ngFor="let country of countries">{{country}}</option>
+        </select>
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.country?.touched &&
+              formSignUp.controls.country?.errors?.required">
+          Phải chọn trường này
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <label for="age">Age: </label>
+        <input type="number" class="form-control" formControlName="age" name="" id="age">
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.age?.touched &&
+              formSignUp.controls.age?.errors?.required">
+          Phải nhập trường này
+        </span>
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.age?.dirty &&
+              formSignUp.controls.age?.errors?.min">
+          Phải lớn hơn hoặc bằng 18 tuổi
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Giới tính</label><br>
+        <label>
+          <input type="radio" name="gender" formControlName="gender" value="Nam">
+          Nam
+        </label>
+
+        <label>
+          <input type="radio" name="gender" formControlName="gender" value="Nữ">
+          Nữ
+        </label>
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.gender?.touched &&
+              formSignUp.controls.gender?.errors?.required">
+          Phải chọn trường này
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <label for="phone">Phone: </label>
+        <input type="text" class="form-control" formControlName="phone" name="" id="phone">
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.phone?.touched &&
+              formSignUp.controls.phone?.errors?.required">
+          Phải nhập trường này
+        </span>
+        <span class="text-danger"
+              *ngIf="
+              formSignUp.controls.phone?.dirty &&
+              formSignUp.controls.phone?.errors?.pattern">
+          Số điện thoại không đúng định dạng
+        </span>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="formSignUp.invalid">Submit</button>
+    </form>
+  </div>
+</div>
