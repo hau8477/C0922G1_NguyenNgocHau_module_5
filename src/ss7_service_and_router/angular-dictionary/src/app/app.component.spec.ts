@@ -23,13 +23,13 @@ describe('AppComponent', () => {
   it(`should have as title 'angular-dictionary'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-dictionary');
+    expect(app.title).toEqual('angular-dictionary-list');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular-dictionary app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('angular-dictionary-list app is running!');
   });
 });
