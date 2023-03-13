@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Facility} from '../../../model/facility/facility';
 
 @Component({
   selector: 'app-facility',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./facility.component.css']
 })
 export class FacilityComponent implements OnInit {
+  facilities: Facility[];
 
   constructor() { }
 

@@ -1,4 +1,3 @@
-
 <table id="tableService" class="table table-striped">
   <thead>
   <tr>
@@ -19,26 +18,26 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+  <tr *ngFor="let facility of facilities; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{facility.name}}</td>
+    <td>{{facility.area}}</td>
+    <td>{{facility.cost}}</td>
+    <td>{{facility.maxPeople}}</td>
+    <td>{{facility.rentType.name}}</td>
+    <td>{{facility.facilityType.name}}</td>
+    <td>{{facility.standardRoom}}</td>
+    <td>{{facility.descriptionOtherConvenience}}</td>
+    <td>{{facility.poolArea}}</td>
+    <td>{{facility.numberOfFloors}}</td>
+    <td>{{facility.facilityFree}}</td>
     <td>
       <app-facility-edit></app-facility-edit>
     </td>
     <td>
       <button
-              type="button" class="btn btn-danger" data-bs-toggle="modal"
-              data-bs-target="#exampleModal3">
+        type="button" class="btn btn-danger" data-bs-toggle="modal"
+        data-bs-target="#exampleModal3">
         Xóa
       </button>
     </td>

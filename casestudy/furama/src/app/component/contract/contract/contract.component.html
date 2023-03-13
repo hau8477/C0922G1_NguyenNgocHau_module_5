@@ -1,4 +1,3 @@
-
 <table id="tableService" class="table table-striped">
   <thead>
   <tr>
@@ -14,14 +13,14 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>
+  <tr *ngFor="let contract of contracts; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{contract.facility}}</td>
+    <td>{{contract.customer}}</td>
+    <td>{{contract.startDate}}</td>
+    <td>{{contract.endDate}}</td>
+    <td>{{contract.deposit}}</td>
+    <td>{{contract.total}}</td>
     <td>
       <!-- Button trigger modal -->
       <button type="button" id="btnDetails" class="btn btn-primary" data-bs-toggle="modal"
@@ -29,7 +28,7 @@
         Danh sách các dịch vụ đi kèm
       </button>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-            >
+      >
         +
       </button>
     </td>
@@ -53,12 +52,12 @@
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item">
-      <a class="page-link" >Previous</a>
+      <a class="page-link">Previous</a>
     </li>
-    <li class="page-item"><a class="page-link" >1</a></li>
-    <li class="page-item"><a class="page-link" >2</a></li>
+    <li class="page-item"><a class="page-link">1</a></li>
+    <li class="page-item"><a class="page-link">2</a></li>
     <li class="page-item">
-      <a class="page-link" >Next</a>
+      <a class="page-link">Next</a>
     </li>
   </ul>
 </nav>
@@ -101,7 +100,7 @@
       </div>
       <div class="modal-body">
         <form method="post">
-          <input id="contractId1" hidden >
+          <input id="contractId1" hidden>
           <table class="table table-striped">
             <thead>
             <tr>
@@ -113,17 +112,17 @@
             </tr>
             </thead>
             <tbody>
-            <tr >
-              <td ></td>
+            <tr>
               <td></td>
-              <td ></td>
+              <td></td>
+              <td></td>
               <td></td>
               <td></td>
             </tr>
             </tbody>
           </table>
           <div class="mb-3">
-            <select class="form-select" aria-label="Default select example" >
+            <select class="form-select" aria-label="Default select example">
               <option></option>
             </select>
           </div>

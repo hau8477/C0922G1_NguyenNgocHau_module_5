@@ -1,4 +1,3 @@
-
 <table class="table">
   <thead>
   <th>STT</th>
@@ -11,26 +10,26 @@
   <th>Số điện thoại</th>
   <th>Loại khách</th>
   <th></th>
-  <th>Xóa</th>
+  <th></th>
   </thead>
   <tbody>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><span ></span></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+  <tr *ngFor="let customer of customers; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{customer.address}}</td>
+    <td>{{customer.dateOfBirth}}</td>
+    <td>{{customer.email}}</td>
+    <td *ngIf="customer.gender ? 'Nam':'Nữ'"></td>
+    <td>{{customer.idCard}}</td>
+    <td>{{customer.name}}</td>
+    <td>{{customer.phoneNumber}}</td>
+    <td>{{customer.customerType.name}}</td>
     <td>
       <app-facility-edit></app-facility-edit>
     </td>
     <td>
       <button
-              type="button" class="btn btn-danger" data-bs-toggle="modal"
-              data-bs-target="#exampleModal3">
+        type="button" class="btn btn-danger" data-bs-toggle="modal"
+        data-bs-target="#exampleModal3">
         Xóa
       </button>
     </td>
@@ -55,12 +54,12 @@
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item">
-      <a class="page-link" >Previous</a>
+      <a class="page-link">Previous</a>
     </li>
-    <li class="page-item"><a class="page-link" >1</a></li>
-    <li class="page-item"><a class="page-link" >2</a></li>
+    <li class="page-item"><a class="page-link">1</a></li>
+    <li class="page-item"><a class="page-link">2</a></li>
     <li class="page-item">
-      <a class="page-link" >Next</a>
+      <a class="page-link">Next</a>
     </li>
   </ul>
 </nav>
@@ -129,7 +128,7 @@
   function checkBirthday() {
     var birthdate = $("#birthdate").val();
     var birthdateEdit = $('#birthdate1').val();
-    if (birthdateEdit === ""){
+    if (birthdateEdit === "") {
       if (!validateDate(birthdate)) {
         alert("Ngày sinh không hợp lệ!");
       } else {

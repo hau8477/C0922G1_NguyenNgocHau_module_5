@@ -10,7 +10,7 @@ export interface Contract {
   startDate?: string;
   endDate?: string;
   deposit?: number;
-
+  total?: number;
 }
 
 //
