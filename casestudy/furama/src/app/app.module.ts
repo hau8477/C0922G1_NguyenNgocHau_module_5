@@ -16,6 +16,7 @@ import { FacilityCreateComponent } from './component/facility/facility-create/fa
 import { CustomerCreateComponent } from './component/customer/customer-create/customer-create.component';
 import { CustomerEditComponent } from './component/customer/customer-edit/customer-edit.component';
 import { ContractCreateComponent } from './component/contract/contract-create/contract-create.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -35,10 +36,11 @@ import { ContractCreateComponent } from './component/contract/contract-create/co
     CustomerEditComponent,
     ContractCreateComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

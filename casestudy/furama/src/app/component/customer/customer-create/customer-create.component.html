@@ -1,85 +1,81 @@
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  +
-</button>
+<h1 style="margin-left: 40%; margin-top: 50px">ADD NEW CUSTOMER</h1>
 
-<!--Modal create-->
-<div class="modal fade" id="exampleModal"
-     tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel1">Thêm mới khách hàng</h1>
-        <button type="button" class="btn-close"
-                onclick=onCloseModal() data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="post" id="customer">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Họ và tên</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                   placeholder="VD: Nguyễn Văn An" required >
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label for="birthdate" class="form-label">Ngày sinh</label>
-            <input type="datetime-local" class="form-control" id="birthdate" placeholder="dd/mm/yyyy"
-                   required>
-
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Giới tính</label><br>
-            <label for="gender1"><input class="ms-3 me-1" checked type="radio"
-                                        id="gender1" >
-              Nam
-            </label>
-            <label for="gender2"><input class="ms-3 me-1" type="radio"  id="gender2"
-            >
-              Nữ
-            </label>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail2" class="form-label">CCCD/CMND</label>
-            <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp"
-                   placeholder="VD: 13549681324"  required>
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail4" class="form-label">Số điện thoại</label>
-            <input type="text" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp"
-                   placeholder="VD: 4562317861"  required>
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail5" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp"
-                   placeholder="VD: annguyen@gamil.com"  required>
-            <p style="color: red"
-               class="form-text"></p>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail6" class="form-label">Địa chỉ</label>
-            <input type="text" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp"
-                   placeholder="VD: 22 Yên Bái, Đà Nẵng"  required>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail6" class="form-label">Loại khách</label>
-            <select  class="form-select" aria-label="Default select example">
-              <option></option>
-            </select>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                    onclick=onCloseModal()>Thoát
-            </button>
-            <button type="button" class="btn btn-primary" id="submit-btn" onclick="checkBirthday()">Lưu
-            </button>
-          </div>
-        </form>
-      </div>
+<form class="form" [formGroup]="formCreate" style="text-align: center">
+  <div style="margin-right: 500px; margin-left: 500px; color: white">
+    <div>
+      <label class="form-label animationTop delay-03">Customer Name:</label><br>
+      <span class="chutieude"
+            *ngIf="formCreate.controls.name.hasError('required')&& formCreate.controls.name.touched">Cannot be left blank !</span>
+      <span class="chutieude" *ngIf="formCreate.controls.name.hasError('pattern')&& formCreate.controls.name.touched">The name is not in the correct format !</span>
+      <input class="form-control animationTop delay-04" type="text" placeholder="Customer Name"
+             formControlName="name"/>
     </div>
+
+    <div>
+      <label class="form-label animationTop delay-05"> Day Of Birth :</label><br>
+      <span class="chutieude"
+            *ngIf="formCreate.controls.dayOfBirth.hasError('invalid')&& formCreate.controls.dayOfBirth.touched">You are not 18+</span>
+      <input class="form-control animationTop delay-06" type="date" placeholder="Date Of Birth"
+             formControlName="dayOfBirth"/>
+      <div>
+        <label class="form-label animationTop delay-07">Gender :</label><br>
+        <select style="font-size: 15px; text-align: center" class="animationTop delay-08" formControlName="gender">
+          <option value="">Gender:</option>
+          <option value="1">Male</option>
+          <option value="0">Female</option>
+          <option value="2">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="form-label animationTop delay-08">ID Card :</label><br>
+        <span class="chutieude"
+              *ngIf="formCreate.controls.idCard.hasError('required') && formCreate.controls.idCard.touched">Cannot be left blank !</span>
+        <span class="chutieude"
+              *ngIf="formCreate.controls.idCard.hasError('pattern') && formCreate.controls.idCard.touched">Not in the correct format !</span>
+        <input class="form-control animationTop delay-09" type="text" placeholder="ID Card" formControlName="idCard"/>
+      </div>
+
+      <div>
+        <label class="form-label animationTop delay-11">Phone Number :</label><br>
+        <span class="chutieude"
+              *ngIf="formCreate.controls.phoneNumber.hasError('required') && formCreate.controls.phoneNumber.touched">Cannot be left blank !</span>
+        <span class="chutieude"
+              *ngIf="formCreate.controls.phoneNumber.hasError('pattern') && formCreate.controls.phoneNumber.touched">Not in the correct format !</span>
+        <input class="form-control animationTop delay-12" type="text" placeholder="Phone Number"
+               formControlName="phoneNumber"/>
+      </div>
+
+      <div>
+        <label class="form-label animationTop delay-13">Email :</label><br>
+        <span class="chutieude"
+              *ngIf="formCreate.controls.email.hasError('required') && formCreate.controls.email.touched">Cannot be left blank !</span>
+        <span class="chutieude"
+              *ngIf="formCreate.controls.email.hasError('pattern') && formCreate.controls.email.touched">Not in the correct format !</span>
+        <input class="form-control animationTop delay-14" type="text" placeholder="Email" formControlName="email"/>
+      </div>
+
+      <div>
+        <label class="form-label animationTop delay-15">Address :</label><br>
+        <span class="chutieude"
+              *ngIf="formCreate.controls.address.hasError('required') && formCreate.controls.address.touched">Cannot be left blank !</span>
+        <span class="chutieude"
+              *ngIf="formCreate.controls.address.hasError('maxlength') && formCreate.controls.address.touched">Address is too long</span>
+        <input class="form-control animationTop delay-16" type="text" placeholder="Address"
+               formControlName="address"/>
+      </div>
+
+      <div>
+        <label class="form-label animationTop delay-17">Customer Type :</label><br>
+        <select style="font-size: 15px;" class="animationTop delay-18" formControlName="customerType">
+          <option value="">Customer type :</option>
+          <option *ngFor="let item of customerType" [ngValue]="item">{{item.name}}</option>
+        </select>
+      </div>
+
+    </div>
+    <div style="text-align: center">
+      <input type="submit" value="Save" class="m-3 btn btn-info animationTop delay-19"></div>
   </div>
-</div>
+</form>
+
