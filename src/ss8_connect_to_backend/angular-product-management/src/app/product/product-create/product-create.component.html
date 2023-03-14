@@ -17,7 +17,7 @@
       <td>Danh mục</td>
       <td>
         <select formControlName="category">
-          <option *ngFor="let category of categories" [value]="category">{{category.name}}</option>
+          <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
         </select>
       </td>
     </tr>

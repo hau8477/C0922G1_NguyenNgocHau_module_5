@@ -19,21 +19,23 @@
   ],
   "products": [
     {
-      "id": 1,
       "name": "IPhone 12",
       "price": 2400000,
       "description": "New",
       "category": {
-        "id": 2,
-        "name": "Samsung123"
-      }
+        "name": "123123",
+        "id": 4
+      },
+      "id": 1
     },
     {
       "name": "IPhone 11",
       "price": 1560000,
       "description": "Like new",
-      "category": "232323123213",
-      "id": 2
+      "category": {
+        "id": 2,
+        "name": "232323123213"
+      }
     },
     {
       "id": 3,
@@ -43,6 +45,16 @@
       "category": {
         "id": 2,
         "name": "Samsung123"
+      }
+    },
+    {
+      "id": 4,
+      "name": "11",
+      "price": 1,
+      "description": "1",
+      "category": {
+        "name": "232323123213",
+        "id": 3
       }
     }
   ]
