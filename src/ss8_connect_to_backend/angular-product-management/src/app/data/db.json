@@ -1,0 +1,49 @@
+{
+  "categories": [
+    {
+      "name": "Samsung123",
+      "id": 2
+    },
+    {
+      "name": "232323123213",
+      "id": 3
+    },
+    {
+      "name": "123123",
+      "id": 4
+    },
+    {
+      "name": "23",
+      "id": 5
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "IPhone 12",
+      "price": 2400000,
+      "description": "New",
+      "category": {
+        "id": 2,
+        "name": "Samsung123"
+      }
+    },
+    {
+      "name": "IPhone 11",
+      "price": 1560000,
+      "description": "Like new",
+      "category": "232323123213",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "IPhone X",
+      "price": 968000,
+      "description": "97%",
+      "category": {
+        "id": 2,
+        "name": "Samsung123"
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<h2>Edit todo</h2>
+<form [formGroup]="contentForm" (ngSubmit)="submit()">
+  <input type="text" formControlName="content">
+  <input hidden type="text" formControlName="id">
+  <input hidden type="text" formControlName="complete">
+  <button type="submit">Save</button>
+</form>
