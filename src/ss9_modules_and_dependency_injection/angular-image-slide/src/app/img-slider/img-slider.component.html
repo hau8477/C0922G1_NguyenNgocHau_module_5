@@ -1,0 +1,7 @@
+<div>
+  <div>
+    <app-img-slide [src]="img"></app-img-slide>
+  </div>
+  <button *ngIf="currentIndex > 0" (click)="prevSlide()">Previous</button>
+  <button *ngIf="currentIndex < listImage.length - 1" (click)="nextSlide()">Next</button>
+</div>
