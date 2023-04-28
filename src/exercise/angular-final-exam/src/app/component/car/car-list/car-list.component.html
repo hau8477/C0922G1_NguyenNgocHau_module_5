@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <h1>Danh sách các xe đăng ký ở bến xe XYZ</h1>
+</div>
+<div>
+  <a class="btn btn-primary" href="#" role="button">Thêm mới</a>
+</div>
+<div class="container-fluid d-flex justify-content-center align-items-center" style="height: 50vh;">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Số xe</th>
+      <th>Loại xe</th>
+      <th>Tên nhà xe</th>
+      <th>Điểm đi</th>
+      <th>Điểm đến</th>
+      <th>Số điện thoại</th>
+      <th>Email</th>
+      <th>Giờ đi</th>
+      <th>Giờ đến</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let car of cars">
+      <td>{{car.id}}</td>
+      <td>{{car.type}}</td>
+      <td>{{car.name}}</td>
+      <td>{{car.startCity.name}}</td>
+      <td>{{car.endCity.name}}</td>
+      <td>{{car.phoneNumber}}</td>
+      <td>{{car.email}}</td>
+      <td>{{car.startHour}}</td>
+      <td>{{car.endHour}}</td>
+      <td>
+        <a class="btn btn-warning" routerLink="/cars/edit/{{car.id}}" role="button">Sửa</a>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="getInfo(car.name, car.id)">Xóa</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -19,4 +19,6 @@
     <td><a routerLink="/products/edit/{{product.id}}">Chỉnh sửa</a></td>
     <td><a routerLink="/products/delete/{{product.id}}">Xóa</a></td>
   </tr>
+  <button class="btn btn-outline-dark" *ngIf="page > 1" (click)="prevSlide()">Previous</button>
+  <button class="btn btn-outline-dark" *ngIf="page < totalPages" (click)="nextSlide()">Next</button>
 </table>

@@ -8,11 +8,18 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ProductService {
   API_URL = 'http://localhost:3000/products';
+
+  // http://localhost:3000/products?_page=1&_limit=5&name_like=iphone&category.id=2
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.API_URL);
+  getAllAndCategoryId(page: number, limit: number, nameSearch: string, categoryId: number): Observable<Product[]> {
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<Product[]>(this.API_URL + '?_page=' + page + '&_limit=' + limit + '&name_like=' + nameSearch + '&category.id=' + categoryId);
+  }
+
+  getAll(page: number, limit: number, nameSearch: string): Observable<Product[]> {
+    return this.http.get<Product[]>(this.API_URL + '?_page=' + page + '&_limit=' + limit + '&name_like=' + nameSearch);
   }
 
   saveProduct(product: Product): Observable<Product> {

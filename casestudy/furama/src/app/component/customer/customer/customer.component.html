@@ -1,4 +1,38 @@
-<h1>Danh sách nhân viên</h1>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/customers/list">Danh sách khách hàng</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form [formGroup]="formSearch" (ngSubmit)="submitSearch()">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <input class="form-control me-2" type="search" placeholder="Tên khách hàng" aria-label="Search"
+                   formControlName="nameSearch">
+          </li>
+          <li class="nav-item">
+            <input class="form-control me-2" type="search" placeholder="Email khách hàng" aria-label="Search"
+                   formControlName="emailSearch">
+          </li>
+          <li class="nav-item">
+          </li>
+          <li class="nav-item">
+            <select formControlName="customerTypeId" class="form-select" aria-label="Default select example">
+              <option *ngFor="let customerType of customerTypes"
+                      [ngValue]="customerType.id">{{customerType.name}}</option>
+            </select>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</nav>
+
 <table class="table">
   <thead>
   <th>STT</th>
@@ -14,7 +48,7 @@
   <th></th>
   </thead>
   <tbody>
-  <tr *ngFor="let customer of customers; index as i">
+  <tr *ngFor="let customer of customers | paginate: { itemsPerPage: 5, currentPage: page}; index as i">
     <td>{{i + 1}}</td>
     <td>{{customer.address}}</td>
     <td>{{customer.dateOfBirth}}</td>
@@ -29,8 +63,7 @@
     </td>
     <td>
       <button
-        type="button" class="btn btn-danger" data-bs-toggle="modal"
-        data-bs-target="#exampleModal3">
+        type="button" class="btn btn-danger" (click)="getInfo(customer.name, customer.id)">
         Xóa
       </button>
     </td>
@@ -38,7 +71,7 @@
   <tr>
     <td></td>
     <td>
-      <app-customer-create></app-customer-create>
+      <a class="btn btn-primary" routerLink="/customers/create" role="button">+</a>
     </td>
     <td></td>
     <td></td>
@@ -52,126 +85,6 @@
   </tr>
   </tbody>
 </table>
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link">1</a></li>
-    <li class="page-item"><a class="page-link">2</a></li>
-    <li class="page-item">
-      <a class="page-link">Next</a>
-    </li>
-  </ul>
-</nav>
-
-<!-- Modal delete-->
-<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel3">Xóa khách hàng</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="post">
-          <input hidden id="idDelete" name="idDelete">
-          <span>
-                        Bạn có chắc chắn muốn xóa <span style="color: red" id="nameDelete"></span>
-                    </span>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
-            <button type="submit" class="btn btn-primary">Xóa</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+<div class="has-text-centered d-flex justify-content-center">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  function getInfoCustomerEdit(id, name, dayOfBirth, gender, idCard, phoneNumber, email, address, customerType) {
-    $('#id1').val(id);
-    $('#name1').val(name);
-    $('#birthdate1').val(dayOfBirth);
-    $('#idCard1').val(idCard);
-    $('#phoneNumber1').val(phoneNumber);
-    $('#email1').val(email);
-    $('#address1').val(address);
-  }
-
-  function getInfoCustomerDelete(id, name) {
-    document.getElementById("idDelete").value = id;
-    document.getElementById("nameDelete").innerText = name;
-  }
-
-  //Kiểm tra định dạng ngày giờ của ngày sinh
-  function validateDate(dateString) {
-    // Kiểm tra định dạng ngày giờ
-    var regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
-    if (!regex.test(dateString)) {
-      return false;
-    }
-
-    // Chuyển đổi thành đối tượng Date
-    var date = new Date(dateString);
-
-    // Kiểm tra tính hợp lệ của đối tượng Date
-    if (isNaN(date.getTime())) {
-      return false;
-    }
-
-    return true;
-  }
-
-  //Kiểm tra định dạng ngày sinh và tính hợp lệ
-  function checkBirthday() {
-    var birthdate = $("#birthdate").val();
-    var birthdateEdit = $('#birthdate1').val();
-    if (birthdateEdit === "") {
-      if (!validateDate(birthdate)) {
-        alert("Ngày sinh không hợp lệ!");
-      } else {
-        var birthYear = new Date(birthdate).getFullYear();
-        var currentYear = new Date().getFullYear();
-        var age = currentYear - birthYear;
-        var birthdateThisYear = new Date(currentYear, new Date(birthdate).getMonth(), new Date(birthdate).getDate());
-        if (new Date() < birthdateThisYear) {
-          age--;
-        }
-        if (age > 90) {
-          alert("Tuổi của bạn đã quá giới hạn so với quy định (<=90)");
-        } else if (age < 18) {
-          alert("Bạn chưa đủ 18 tuổi");
-        } else {
-          $("#customer").submit();
-        }
-      }
-    } else if (!validateDate(birthdateEdit)) {
-      alert("Ngày sinh không hợp lệ!");
-    } else {
-      var birthYear = new Date(birthdate).getFullYear();
-      var currentYear = new Date().getFullYear();
-      var age = currentYear - birthYear;
-      var birthdateThisYear = new Date(currentYear, new Date(birthdate).getMonth(), new Date(birthdate).getDate());
-      if (new Date() < birthdateThisYear) {
-        age--;
-      }
-      if (age > 90) {
-        alert("Tuổi của bạn đã quá giới hạn so với quy định (<=90)");
-      } else if (age < 18) {
-        alert("Bạn chưa đủ 18 tuổi");
-      } else {
-        $("#customer").submit();
-      }
-    }
-
-  }
-
-  function onCloseModal() {
-    document.getElementById('exampleModal').style.display = 'none';
-    window.location.href = "/customers";
-  }
-
-</script>

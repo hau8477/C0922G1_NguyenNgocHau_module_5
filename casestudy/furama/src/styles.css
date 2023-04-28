@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~sweetalert2/dist/sweetalert2.css";
+
 body {
   /*background-image: url(https://pix10.agoda.net/hotelImages/463/463255/463255_17010415020050117322.jpg?ca=6&ce=1&s=1024x768);*/
   background-repeat: no-repeat;
@@ -8,6 +10,7 @@ body {
   height: 100vh;
   box-sizing: border-box;
 }
+
 
 
 

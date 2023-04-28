@@ -6,6 +6,8 @@ import {CustomerComponent} from './customer/customer.component';
 import {CustomerCreateComponent} from './customer-create/customer-create.component';
 import {CustomerEditComponent} from './customer-edit/customer-edit.component';
 import {FacilityModule} from '../facility/facility.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -14,10 +16,12 @@ import {FacilityModule} from '../facility/facility.module';
     CustomerCreateComponent,
     CustomerEditComponent,
   ],
-    imports: [
-        CommonModule,
-        CustomerRoutingModule,
-        FacilityModule
-    ]
+  imports: [
+    CommonModule,
+    CustomerRoutingModule,
+    FacilityModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+  ]
 })
 export class CustomerModule { }

@@ -13,10 +13,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '**',
-    component: HomeComponent
-  },
-  {
     path: 'customers',
     loadChildren: () => import('./component/customer/customer.module').then(module => module.CustomerModule)
   },
@@ -27,6 +23,10 @@ const routes: Routes = [
   {
     path: 'contracts',
     loadChildren: () => import('./component/contract/contract.module').then(module => module.ContractModule)
+  },
+  {
+    path: '**',
+    component: HomeComponent
   },
 ];
 

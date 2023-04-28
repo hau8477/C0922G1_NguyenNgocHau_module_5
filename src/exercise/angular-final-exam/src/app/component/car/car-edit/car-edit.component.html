@@ -1,0 +1,119 @@
+<div class="d-flex justify-content-center">
+  <h1>Chỉnh sửa thông tin xe khách có số xe {{carEdit?.id}}</h1>
+</div>
+<div class="d-flex justify-content-center">
+  <div>
+    <form novalidate *ngIf="formEdit" [formGroup]="formEdit" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <div>
+          <label>Số xe</label>
+          <input type="text" class="form-control" disabled formControlName="id">
+          <label>Loại xe</label>
+          <input type="text" class="form-control" formControlName="type">
+          <span class="text-danger"
+                *ngIf="
+      formEdit.controls.type?.touched &&
+      formEdit.controls.type?.errors?.required">
+      Phải nhập trường này.
+      </span>
+        </div>
+
+        <div>
+          <label>Tên nhà xe</label>
+          <input type="text" class="form-control" formControlName="name">
+          <span class="text-danger"
+                *ngIf="
+      formEdit.controls.name?.touched &&
+      formEdit.controls.name?.errors?.required">
+      Phải nhập trường này.
+      </span>
+        </div>
+
+        <div>
+          <label>Điểm đi</label>
+          <select formControlName="startCity">
+            <option *ngFor="let city of cities" [ngValue]="city">{{city.name}}</option>
+          </select>
+          <span class="text-danger"
+                *ngIf="
+      formEdit.controls.startCity?.touched &&
+      formEdit.controls.startCity?.errors?.required">
+      Phải nhập trường này.
+      </span>
+          <label>Điểm đến</label>
+          <select formControlName="endCity">
+            <option *ngFor="let city of cities" [ngValue]="city">{{city.name}}</option>
+          </select><br>
+          <span class="text-danger"
+                *ngIf="
+      formEdit.controls.endCity?.touched &&
+      formEdit.controls.endCity?.errors?.required">
+      Phải nhập trường này.
+      </span>
+        </div>
+
+        <div>
+          <label>Số điện thoại</label>
+          <input type="text" class="form-control" formControlName="phoneNumber">
+          <span class="text-danger"
+                *ngIf="
+      formEdit.controls.phoneNumber?.touched &&
+      formEdit.controls.phoneNumber?.errors?.required">
+      Phải nhập trường này.
+      </span>
+          <span class="text-danger"
+                *ngIf="
+      formEdit.controls.phoneNumber?.touched &&
+      formEdit.controls.phoneNumber?.errors?.pattern">
+      số điện thoại không đúng định dạng
+      </span>
+        </div>
+
+        <div>
+          <label>Email</label>
+          <input type="email" class="form-control" formControlName="email">
+          <span class="text-danger"
+                *ngIf="
+      formEdit.controls.email?.touched &&
+      formEdit.controls.email?.errors?.required">
+      Phải nhập trường này.
+      </span>
+          <span class="text-danger"
+                *ngIf="
+      formEdit.controls.email?.touched &&
+      formEdit.controls.email?.errors?.pattern">
+      Email không đúng định dạng
+      </span>
+        </div>
+
+        <div>
+          <label>Giờ đi</label>
+          <input type="time" class="form-control" formControlName="startHour">
+          <span class="text-danger"
+                *ngIf="
+      formEdit.controls.startHour?.touched &&
+      formEdit.controls.startHour?.errors?.required">
+      Phải nhập trường này.
+      </span>
+        </div>
+
+        <div>
+          <label>Giờ đến</label>
+          <input type="time" class="form-control" formControlName="endHour">
+          <span class="text-danger"
+                *ngIf="
+      formEdit.controls.endHour?.touched &&
+      formEdit.controls.endHour?.errors?.required">
+      Phải nhập trường này.
+      </span>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <a name="" id="" class="btn btn-primary" routerLink="/cars/list" role="button">Quay lại</a>
+          <button type="submit" class="btn btn-primary" [disabled]="formEdit.invalid">Sửa</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
